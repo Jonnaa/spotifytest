@@ -18,15 +18,22 @@ import os
 # Base64 imported because the concatenated string of clientId and client secret
 #   needs to be encoded with base 64, then it can be sent to receive a token
 import base64
+# https://docs.python.org/3/library/hashlib.html#hashlib.sha256
+import hashlib
+# https://pypi.org/project/localStoragePy/
+from localStoragePy import localStoragePy
+import random
 from requests import post, get, put
 import json
 
 # Will only load if there is a .env file created
 load_dotenv()
 
+localStorage = localStoragePy('tempo', 'text')
+
 # Note: Research what os is
-client_id = os.getenv("CLIENT_ID")
-client_secret = os.getenv("CLIENT_SECRET")
+client_id = os.environ['CLIENT_ID']
+client_secret = os.environ['CLIENT_SECRET']
 
 def get_token():
 # Steps to get token
@@ -158,7 +165,25 @@ def play_song(token, track_id):
     # pause_song(token)
     return result.json()
 
+# https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow
+def generateRandomString(length):
+    text = ''
+    possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    for i in range(length):
+        text+=possible[random.randint(0,len(possible)-1)]
+    return text
 
+def generateCodeChallenge(codeVerifier):
+
+    # https://docs.python.org/3/library/hashlib.html#hashlib.sha256
+    h = hashlib.new('sha256')
+    h.update(codeVerifier.encode('utf8'))
+    digest = h.digest()
+    digest = str(base64.b64encode(digest, altchars=b'-_'),"utf-8")
+    digest = digest.replace('=','')
+    # digest = base64.b64encode(digest, altchars=b'-:')
+
+    return digest
 
 # # This token will be used in future headers when requests to the api are sent
 # #   requests such as trying to get artist info or album info
