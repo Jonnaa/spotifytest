@@ -9,16 +9,18 @@
 
 <!-- Block for page content -->
 {% block content %}  
+<main class="container">
     <h1>{{track.artist_name}}</h1>
     <!-- https://developer.spotify.com/documentation/web-playback-sdk/howtos/web-app-player -->
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
 
     <img src="{{track.img}}" alt="track picture">
-    <h4>{{track.track_name}}</h4>
+    <h4 class="font">{{track.track_name}}</h4>
     <div class="buttons">
-        <button class="btn" id="togglePlay">Toggle Play</button>
+        <button class="btn player" id="togglePlay">T o g g l e &nbsp; P l a y</button>
         <!-- <button class=".btn-lg" id="nextTrack">Next Track</button> -->
     </div>
+</main>
 
 
     <script>

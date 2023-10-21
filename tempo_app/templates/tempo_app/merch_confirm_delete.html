@@ -8,15 +8,16 @@
 
 <!-- Block for page content -->
 {% block content %}  
+<main class="container">
+  <h2>Delete Merch</h1>
 
-<h1>Delete Merch</h1>
-
-<h4>Are you sure you want to delete <span class="teal-text">{{ object.item }}</span>?</h4>
-
-<form action="" method="POST">
-  {% csrf_token %}
-  <input type="submit" value="Yes - Delete" class="btn">
-  <a href="{% url 'merch_details' merch.id %}">Cancel</a>
-</form>
-
+  <h4>Are you sure you want to delete <br><span class="teal-text">{{ object.item }}</span>?</h4>
+  
+  <form action="" method="POST">
+    {% csrf_token %}
+    <input id="delete" class="btn" type="submit" value="Yes - Delete" class="btn">
+    <a class="btn stretch-font" href="{% url 'merch_details' merch.id %}">Cancel</a>
+  </form>
+</main>
 {% endblock %}
+

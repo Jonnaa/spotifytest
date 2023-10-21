@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Tempo</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/landing.css' %}">
 </head>
@@ -14,8 +14,7 @@
         <source src="{% static 'backgrounds/tempo-speed.mp4' %}" type="video/mp4">
     </video>
     <h1>Tempo</h1>
-    <button class="btn"><a href="{% url 'artist' 'Drake'%}">Browse</a></button>
-
+    <button class="btn"><a href="{% url 'artist_api' %}">Browse</a></button>
 </body>
 
 </html>

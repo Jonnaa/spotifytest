@@ -1,36 +1,57 @@
 {% extends 'tempo_app/base.html' %}
+
 {% load static %}
 
-<!-- Block for page specific css links -->
 {% block csslinks %}
-<link rel="stylesheet" href="{% static 'css/artist.css' %}">
+<link rel="stylesheet" href="{% static 'css/artist-detail.css' %}">
 {% endblock %}
 
-<!-- Block for page content -->
-{% block content %}  
 
+{% block content %}
 
-<h1>{{artist}}</h1>
-
-<div class="topContent">
-    <!-- <div class="card"> -->
-        <div>
-        <h3>Top tracks</h3>
-        <!-- <div class="card-content"> -->
-            {% for song in songs %}
-                <a href="{% url 'player' song.id %}">
-                    <h5>{{song.name}}</h5>
-                </a>
-            {% endfor %}
-        <!-- </div> -->
+<main class="container-fluid">
+    <div class="hero">
+        <img src="{{ image_url }}" alt="artist image" class="hero-image">
+        <div class="overlay">
+            <h1>{{ artist }}</h1>
+            <div class="topContent">
+                <div>
+                    <h3 class="uppercase">Top Tracks</h3>
+                    {% for song in songs %}
+                        <a href="{% url 'player' song.id %}">
+                            <h5 class="uppercase">{{ song.name }}</h5>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
-    <img src="{{image_url}}" alt="artist image">
-</div>
 
-<!-- <div class="card merch"> -->
-<div class="merch">
-    <h3>Merch</h3>
-</div>
-
+    <div class="container-fluid">
+        {% if merchs %}
+            <h2 class="merchH">Available for Purchase</h2>
+            <div class="row merch">
+                {% for merch in merchs %}
+                    <div class="col-lg-3 col-md-3 col-12">
+                        <a href="{% url 'merch_details' merch.id %}" class="merchA">
+                            <div class="merchItem">
+                                <div class="price">
+                                    <h4>${{merch.price}}</h4>
+                                </div>
+                                {% if "merch/" in merch.image %}
+                                    <img src="{% static merch.image %}" alt="{{merch.item}} picture" class="merchImg">
+                                {% else %}
+                                    <img src="{{merch.image}}" alt="{{merch.item}} picture" class="merchImg">
+                                {% endif %}
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    
+    
+</main>
 
 {% endblock %}

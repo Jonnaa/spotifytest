@@ -60,7 +60,7 @@ a:hover {
 .btn {
     border: 2px solid white; 
     background-color: transparent; 
-    border-radius: 20px; 
+    border-radius: 40px; 
     padding: 10px 20px; 
     text-transform: uppercase;
     font-weight: bold; 
@@ -74,4 +74,27 @@ a:hover {
 
 .btn:hover {
     background-color: white; 
+}
+
+
+@media (min-width: 280px) and (max-width: 624px) {
+    h1 {
+        font-size: 25px; 
+        position: fixed;  
+        top: 50%;        
+        left: 50%;      
+        transform: translate(-50%, -50%);
+    }
+   
+    .btn {
+        padding: 10px 20px; 
+        top: 70%; 
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #landingvideo {
+        min-width: 100%; 
+        min-height: auto; 
+    }
 }
