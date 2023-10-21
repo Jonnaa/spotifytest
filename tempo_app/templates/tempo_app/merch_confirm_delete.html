@@ -1,0 +1,23 @@
+{% extends 'tempo_app/base.html' %}
+{% load static %}
+
+<!-- Block for page specific css links -->
+{% block csslinks %}
+<link rel="stylesheet" href="{% static 'css/merch-form.css' %}">
+{% endblock %}
+
+<!-- Block for page content -->
+{% block content %}  
+<main class="container">
+  <h2>Delete Merch</h1>
+
+  <h4>Are you sure you want to delete <br><span class="teal-text">{{ object.item }}</span>?</h4>
+  
+  <form action="" method="POST">
+    {% csrf_token %}
+    <input id="delete" class="btn" type="submit" value="Yes - Delete" class="btn">
+    <a class="btn stretch-font" href="{% url 'merch_details' merch.id %}">Cancel</a>
+  </form>
+</main>
+{% endblock %}
+

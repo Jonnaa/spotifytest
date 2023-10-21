@@ -1,0 +1,54 @@
+@font-face {
+    font-family: "Stretch Pro";
+    src: url('/static/fonts/StretchPro.otf') format('opentype');
+  }
+
+body {
+    background-image: url('/static/backgrounds/home.jpeg');
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+  }
+
+main {
+flex: 1 0 auto;
+position: relative;
+}
+
+footer.page-footer {
+  padding-top: 0;
+  color: white;
+}
+
+/* Content */
+h1 {
+  font-family: "Stretch Pro";
+  color: white;
+  font-size: 80px;
+  margin-top: 50px;
+}
+
+/* Navbar */
+.customize-navbar {
+  background-color: transparent !important;
+  font-family: "Stretch Pro", sans-serif; 
+}
+
+.navbar-nav.ml-auto {
+  margin-left: auto; 
+  color: white;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: white;
+  text-transform: uppercase;
+}
+
+.navbar-brand {
+  color: white !important; 
+  font-size: 30px !important;
+}

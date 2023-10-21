@@ -1,0 +1,123 @@
+@font-face {
+    font-family: "Stretch Pro";
+    src: url('/static/fonts/StretchPro.otf') format('opentype');
+  }
+
+.stretch-font {
+  font-family: Stretch Pro;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+body {
+    background-image: url('/static/backgrounds/home.jpeg');
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+  }
+
+main {
+flex: 1 0 auto;
+position: relative;
+}
+
+/* Content */
+h1 {
+  font-family: "Stretch Pro";
+  color: white;
+  font-size: 80px;
+  /* margin-top: 50px; */
+}
+
+/* Navbar */
+.customize-navbar {
+  background-color: transparent !important;
+  font-family: "Stretch Pro", sans-serif; 
+}
+
+.navbar-nav.ml-auto {
+  margin-right: auto; 
+  color: white;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: white;
+  text-transform: uppercase;
+}
+
+.navbar-brand {
+  color: white !important; 
+  font-size: 30px !important;
+}
+
+.navbtn {
+  font-size: 12px;
+  border: 2px solid white; 
+  background-color: transparent; 
+  border-radius: 40px; 
+  padding: 10px; 
+  text-transform: uppercase;
+  font-weight: bold; 
+}
+
+.btn-outline-success {
+  color: white;
+}
+.btn-outline-success:hover {
+  color: white;
+  border-color: none;
+}
+
+.btn:hover {
+  background-color: white; 
+}
+
+#navForm {
+  border-radius: 40px; 
+  padding: 10px;
+  border: none;
+}
+
+/* Footer */
+footer {
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 50px 0px 20px 0px;
+  text-align: center;
+  bottom: 0;  
+}
+
+@media only screen and (min-width:992px){
+  .customize-navbar{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    justify-content: space-between;
+  }
+  .navbar-nav{
+    width: 370px;
+  }
+  .form-inline{
+    position: relative;
+    right: 0;
+    width: 400px;
+    position: relative;
+  }
+  #navForm{
+    border-radius: 40px;
+    position: relative;
+    width: 70%;
+    font-size: 15px;
+  }
+  .form-inline>.btn{
+    position: relative;
+    width: 26%;
+    padding-left: 6px;
+  }
+}

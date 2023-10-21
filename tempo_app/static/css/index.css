@@ -1,0 +1,103 @@
+.featured-artist {
+    position: relative;
+}
+
+.artist-image {
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 50%; 
+    transition: opacity 0.3s ease-in-out; 
+}
+
+.details {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    text-align: center;
+    transition: opacity 0.3s ease-in-out; 
+}
+
+.artist-name {
+    color: white;
+    margin: 0;
+    font-family: 'Stretch Pro';
+    font-size: 20px;
+}
+
+.featured-artist:hover .artist-image {
+    opacity: 0.6; 
+}
+
+.featured-artist:hover .details {
+    opacity: 1; 
+}
+
+h1 {
+    padding: 60px 0px 40px 0px;    
+    text-transform: uppercase;
+    font-size: 60px;
+}
+
+/* Base Styles (for larger screens) */
+.featured-artist {
+    position: relative;
+}
+
+.artist-image {
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 50%; 
+    transition: opacity 0.3s ease-in-out; 
+}
+
+.details {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    text-align: center;
+    transition: opacity 0.3s ease-in-out; 
+}
+
+.artist-name {
+    color: white;
+    margin: 0;
+    font-family: 'Stretch Pro';
+    font-size: 20px;
+}
+
+.featured-artist:hover .artist-image {
+    opacity: 0.6; 
+}
+
+.featured-artist:hover .details {
+    opacity: 1; 
+}
+
+h1 {
+    padding: 60px 0px 40px 0px;    
+    text-transform: uppercase;
+    font-size: 60px;
+}
+
+
+@media (min-width: 280px) and (max-width: 900px) {
+    h1 {
+        font-size: 10px; 
+        padding: 20px 0px 20px 0px;
+    }
+
+    .artist-image {
+        width: 75px; 
+        height: 75px; 
+    }
+
+    .artist-name {
+        font-size: 16px; 
+    }
+}

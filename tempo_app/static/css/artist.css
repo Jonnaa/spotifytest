@@ -1,0 +1,113 @@
+/* CSS File for artist detail */
+/* Not in Use */
+
+.container{
+    font-family: 'Stretch Pro';
+    color: white;
+}
+.artistName{
+    width: 80%;
+    margin: 0 auto 20px;
+    font-size: 45px;
+}
+.topContent{
+    position: relative;
+    width: 80%;
+    gap: 0;
+    margin: 0 auto 20px;
+}
+
+.artistPic{
+    position: relative;
+    width:80%;
+    display: block;
+    margin-left: 0;
+}
+.merch{
+    width: 80%;
+    margin: 0 auto;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+h5{
+    font-size: 12px;
+}
+.merchH{
+    width: 80%;
+    margin: 0 auto;
+}
+.merch{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    justify-content: space-between;
+}
+.merchItem{
+    width: 40%;
+    display: inline;
+    margin-top: 20px;
+}
+.merchItem>h4{
+    font-size: 15px;
+}
+.merchImg{
+    position: relative;
+    width: 100%;
+}
+
+@media only screen and (min-width:350px) and (max-width:768px){
+    .topContent{
+        display: grid;
+        grid-template-rows: .5fr 1fr;
+    }
+    .artistPic{
+        grid-row:1;
+        width: 70%;
+        max-width: 325px;
+    }
+}
+@media only screen and (min-width:768px){
+    .container{
+        max-width: 900px;
+    }
+    .artistName{
+        width: 90%;
+        max-width: 1000px;
+        margin-bottom: 40px;
+    }
+    .topContent{
+        width: 90%;
+        max-width: 1000px;
+        display: flex;
+        max-height: 450px;
+        margin-bottom: 40px;
+        justify-content: space-between;
+    }
+    .card:first-of-type{
+        flex: auto 1;
+        display: inline-block;
+    }
+    .artistPic{
+        width: 40%;
+        max-width: 350px;
+        margin-right: 0;
+    }
+    .merch{
+        width: 90%;
+        max-width: 1000px;
+    }
+    .merchItem>h4{
+        font-size: 20px;
+    }
+    .merchH{
+        width: 90%;
+        font-size: 30px;
+    }
+}
+@media only screen and (min-width:1000px){
+    h5{
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,96 @@
+{% extends 'tempo_app/base.html' %}
+{% load static %}
+
+<!-- Block for page specific css links -->
+{% block csslinks %}
+<link rel="stylesheet" href="{% static 'css/player.css' %}">
+{% endblock %}
+
+
+<!-- Block for page content -->
+{% block content %}  
+    <h1>{{track.artist_name}}</h1>
+    <!-- https://developer.spotify.com/documentation/web-playback-sdk/howtos/web-app-player -->
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+
+    <img src="{{track.img}}" alt="track picture">
+    <h4>{{track.track_name}}</h4>
+    <div class="buttons">
+        <button class="btn" id="togglePlay">Toggle Play</button>
+        <!-- <button class=".btn-lg" id="nextTrack">Next Track</button> -->
+    </div>
+
+
+    <script>
+        // https://developer.spotify.com/documentation/web-api/reference/get-a-users-available-devices
+        async function getDevices(){
+            let url = 'https://api.spotify.com/v1/me/player/devices'
+            const options={
+                method: 'GET',
+                headers:{
+                    Authorization:'Bearer {{access_token}}'
+                }
+            }
+            // https://developer.spotify.com/documentation/web-api/howtos/web-app-profile
+            // Docs show how to send the fetch request, and how to use await twice
+            const devices = await fetch(url,options)
+            const dev = await devices.json()
+            console.log(dev.devices)
+            let tempo=""
+            for(let device of dev.devices){
+                if(device.name==="Tempo Player"){
+                    tempo=device.id
+                }
+            }
+            changeSong(tempo)
+        }
+        // https://developer.spotify.com/documentation/web-api/reference/start-a-users-playback
+        async function changeSong(deviceId){
+            let track ="{{track.track_id}}"
+            let url = "https://api.spotify.com/v1/me/player/play?device_id="+deviceId
+            let data = {
+                'uris':["spotify:track:"+track],
+                "position_ms":0
+            }
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+            data = JSON.stringify(data)
+            const options = {
+                method: "PUT",
+                headers: {
+                    'Authorization':'Bearer {{access_token}}',
+                    'Content-Type':'application/json'
+                },
+                body: data
+            }
+            console.log(url)
+            console.log(options)
+            const res = await fetch(url, options)
+            console.log(res)
+        }
+        // https://developer.spotify.com/documentation/web-playback-sdk/howtos/web-app-player
+        window.onSpotifyWebPlaybackSDKReady = () => {
+            const token = '{{access_token}}';
+            const player = new Spotify.Player({
+            name: 'Tempo Player',
+            getOAuthToken: cb => { cb(token); },
+            volume: 0.2
+            });
+            player.connect().then(success => {
+                if (success) {
+                    console.log('The Web Playback SDK successfully connected to Spotify!');
+                    console.log('{{track.track_id}}')
+                }
+            })
+            player.addListener('ready', ({ device_id }) => {
+                console.log('Connected with Device ID', device_id);
+                getDevices()
+            });
+            document.getElementById('togglePlay').onclick = function() {
+                player.togglePlay();
+            }
+            document.getElementById('nextTrack').onclick = function() {
+                player.nextTrack();
+            }
+        };
+    </script>
+{% endblock %}

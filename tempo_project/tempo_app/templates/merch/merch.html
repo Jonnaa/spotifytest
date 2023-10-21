@@ -1,0 +1,33 @@
+{% extends 'tempo_app/base.html' %}
+{% load static %}
+
+<!-- Block for page specific css links -->
+{% block csslinks %}
+<link rel="stylesheet" href="{% static 'css/merch-index.css' %}">
+{% endblock %}
+
+<!-- Block for page content -->
+{% block content %}  
+
+<h1>Merch</h1>
+
+{% if merchs%}
+  {% for merch in merchs %}
+    <a href="{% url 'merch_details' merch.id %}">
+      <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ merch.item }}</span>
+        <p>${{ merch.price }}</p>
+        <img src="{{ merch.image }}" alt="{{ merch.item }}">
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+{% else %}
+  <h1>No Merch</h1>
+{% endif %}
+
+<a href="{% url 'merch_create' %}">Add Merch</a>
+
+
+{% endblock %}

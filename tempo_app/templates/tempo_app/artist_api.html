@@ -1,0 +1,34 @@
+{% extends 'tempo_app/base.html' %}
+{% load static %}
+
+<!-- Block for page specific css links -->
+{% block csslinks %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+<!-- Block for page content -->
+{% block content %}
+<main class="container">
+    <h1>Featured Artists</h1>
+
+    <div class="container">
+        <div class="row">
+            {% for artist in artist_data %}
+            <div class="col-lg-3 col-md-4 col-6">
+                <figure class="featured-artist">
+                    <a href="{% url 'artist' artist.name %}">
+                        <div class="artist-image">
+                            <img src="{{ artist.image_url }}" alt="{{ artist.name }}" class="artist-image">
+                        </div>
+                        <div class="details">
+                            <h3 class="artist-name">{{ artist.name }}</h3>
+                        </div>
+                    </a>
+                </figure>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+
+{% endblock %}

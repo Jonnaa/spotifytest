@@ -1,0 +1,77 @@
+@font-face {
+    font-family: "Stretch Pro";
+    src: url('/static/fonts/StretchPro.otf') format('opentype');
+  }
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    background-color: transparent; 
+}
+
+h1 {
+    font-family: "Stretch Pro";
+    color: white;
+    font-size: 100px;
+    position: fixed;  
+    top: 50%;        
+    left: 50%;      
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+#landingvideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1; 
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+    background-color: transparent; 
+}
+
+a {
+    font-family: "Stretch Pro";
+    font-size: 15px;
+    text-decoration: none;
+    color: white;
+    letter-spacing: 2px;
+}
+
+a:hover {
+    color: #2b2d2f;
+}
+
+
+.btn {
+    border: 2px solid white; 
+    background-color: transparent; 
+    border-radius: 20px; 
+    padding: 10px 20px; 
+    text-transform: uppercase;
+    font-weight: bold; 
+    transition: background-color 0.3s ease; 
+    position: fixed;  
+    top: 70%;        
+    left: 50%;      
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.btn:hover {
+    background-color: white; 
+}

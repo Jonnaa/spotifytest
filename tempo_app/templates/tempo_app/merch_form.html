@@ -1,0 +1,30 @@
+{% extends 'tempo_app/base.html' %}
+{% load static %}
+
+<!-- Block for page specific css links -->
+{% block csslinks %}
+<link rel="stylesheet" href="{% static 'css/merch-form.css' %}">
+{% endblock %}
+
+<!-- Block for page content -->
+{% block content %}  
+<main class="container">
+    <div class="form-container"></div>
+        {% if object %}
+        <h1>E d i t &nbsp; <span class="teal-text">{{object.item}}</span></h1>
+        {% else %}
+            <h1>A d d &nbsp; M e r c h</h1>
+        {% endif %}
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <input type="submit" value="Submit" class="btn">
+        </form>
+    </div>
+</main>
+
+
+{% endblock %}
