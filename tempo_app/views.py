@@ -52,7 +52,8 @@ def player(request, track_id):
         "track_id": track_id,
     }
     return render(request, 'tempo_app/player.html',{
-        'access_token':StoredInfo.access_token,
+        # 'access_token':StoredInfo.access_token,
+        'access_token':localStorage.getItem('access_token'),
         'track':track,
     })
 
@@ -215,8 +216,9 @@ def callback(request):
 
     result = post(url=url, headers=headers, data=body)
     json_result = json.loads(result.content)
-    StoredInfo.access_token = json_result['access_token']
-    StoredInfo.refresh_token = json_result['refresh_token']
+    localStorage.setItem('access_token',json_result['access_token'])
+    # StoredInfo.access_token = json_result['access_token']
+    # StoredInfo.refresh_token = json_result['refresh_token']
 
     return redirect('landing')
 # # https://developer.spotify.com/documentation/web-api/tutorials/code-flow
