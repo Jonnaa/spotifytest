@@ -54,6 +54,7 @@ def player(request, track_id):
     return render(request, 'tempo_app/player.html',{
         # 'access_token':StoredInfo.access_token,
         'access_token':localStorage.getItem('access_token'),
+        # 'access_token':get_token(),
         'track':track,
     })
 

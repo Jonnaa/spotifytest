@@ -71,11 +71,14 @@
         }
         // https://developer.spotify.com/documentation/web-playback-sdk/howtos/web-app-player
         window.onSpotifyWebPlaybackSDKReady = () => {
-            const token = '{{access_token}}';
+            // const token = '{{access_token}}';
+            let t = '{{access_token}}'
+            localStorage.setItem('access_token',t)
+            let token = localStorage.getItem('access_token')
             const player = new Spotify.Player({
-            name: 'Tempo Player',
-            getOAuthToken: cb => { cb(token); },
-            volume: 0.2
+                name:'Tempo Player',
+                getOAuthToken: cb => { cb(token); },
+                volume: 0.2
             });
             player.connect().then(success => {
                 if (success) {
